@@ -18,7 +18,8 @@ func main() {
 	
 	
 
-
+	for{
+	
 	var firstName string
 	var lastName string
 	var email string
@@ -47,4 +48,5 @@ func main() {
 	
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v Remaining tickets %v\n", remainingTickets, conferenceName)
+}
 }
