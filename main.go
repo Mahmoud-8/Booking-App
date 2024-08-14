@@ -16,6 +16,11 @@ func main() {
 	fmt.Println("We have total of", conferenceTickets, "tickets and", remainingTickets, "are still available.")															
 	fmt.Println("Get your tickets here to attend")
 	
+	var bookings = [50]string{"Medo", "Nino","Peter"} 
+
+
+
+
 	var firstName string
 	var lastName string
 	var email string
