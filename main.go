@@ -61,8 +61,5 @@ func main() {
 			fmt.Printf("Sorry, we only have %v tickets remaining\n", remainingTickets)
 
 		}
-
-	
-
 	}
 }
