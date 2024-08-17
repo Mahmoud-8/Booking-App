@@ -39,16 +39,10 @@ func main() {
 		isValidName := len(firstName) >= 2 && len(lastName) >=2
 		isValidEmail := strings.Contains(email, "@")
 		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
-		
 
 		
-		
 
-
-
-
-
-		if userTickets <= remainingTickets {
+		if isValidName && isValidEmail && isValidTicketNumber {
 			remainingTickets = remainingTickets - userTickets
 			bookings = append(bookings, firstName+" "+lastName)
 
@@ -70,7 +64,7 @@ func main() {
 				break
 			}
 		} else {
-			fmt.Printf("Sorry, we only have %v tickets remaining\n", remainingTickets)
+			fmt.Printf("Your input data is invalid, try again")
 
 		}
 	}
