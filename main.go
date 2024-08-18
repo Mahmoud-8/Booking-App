@@ -13,12 +13,7 @@ func main() {
 	bookings := []string{}
 
 
-	greetUsers()
-
-	fmt.Printf("conferenceTickets is %T, remainingTickets is %T", conferenceTickets, remainingTickets)
-	fmt.Println("Welcome to", conferenceName, "booking application")
-	fmt.Println("We have total of", conferenceTickets, "tickets and", remainingTickets, "are still available.")
-	fmt.Println("Get your tickets here to attend")
+	greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	for {
 
@@ -84,6 +79,9 @@ func main() {
 	}
 }
 
-func greetUsers() {
-	fmt.Println("Welcome to Go Conference")
+func greetUsers(confName string, confTickets int, remaingingTickets uint) {
+	fmt.Println("Welcome to Go Conference", confName)
+	fmt.Printf("We have total of %v tickets and %v are still availble.\n", confTickets, remaingingTickets,)
+	fmt.Println("Get your tickets here to attend")
+
 }
