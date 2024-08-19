@@ -12,7 +12,6 @@ func main() {
 	var remainingTickets uint = 50
 	bookings := []string{}
 
-
 	greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	for {
@@ -34,11 +33,7 @@ func main() {
 		fmt.Println("Enter number of tickets: ")
 		fmt.Scan(&userTickets)
 
-		isValidName := len(firstName) >= 2 && len(lastName) >=2
-		isValidEmail := strings.Contains(email, "@")
-		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
-
-		
+	isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
 		if isValidName && isValidEmail && isValidTicketNumber {
 			remainingTickets = remainingTickets - userTickets
@@ -50,7 +45,6 @@ func main() {
 
 			firstNames := getFirstNames(bookings)
 			fmt.Printf("The first names of bookings are: %v\n ", firstNames)
-
 
 			if !isValidName {
 				fmt.Println("Your name is invalid, try again")
@@ -71,18 +65,26 @@ func main() {
 
 func greetUsers(confName string, confTickets int, remaingingTickets uint) {
 	fmt.Println("Welcome to Go Conference", confName)
-	fmt.Printf("We have total of %v tickets and %v are still availble.\n", confTickets, remaingingTickets,)
+	fmt.Printf("We have total of %v tickets and %v are still availble.\n", confTickets, remaingingTickets)
 	fmt.Println("Get your tickets here to attend")
 
 }
 
-
-func getFirstNames(bookings []string ) []string {
+func getFirstNames(bookings []string) []string {
 	firstNames := []string{}
-			for _, booking := range bookings {
+	for _, booking := range bookings {
 
-				var names = strings.Fields(booking)
-				firstNames = append(firstNames, names[0])
-			}
- return firstNames
+		var names = strings.Fields(booking)
+		firstNames = append(firstNames, names[0])
+	}
+	return firstNames
+}
+
+func validateUserInput(firstName string, lastName string, email string, userTickets uint, remainingTickets uint) (bool, bool, bool) {
+	isValidName := len(firstName) >= 2 && len(lastName) >= 2
+	isValidEmail := strings.Contains(email, "@")
+	isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
+
+	return isValidName, isValidEmail, isValidTicketNumber
+
 }
