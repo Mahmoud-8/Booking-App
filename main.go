@@ -48,7 +48,9 @@ func main() {
 			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 			fmt.Printf("%v Remaining tickets %v\n", remainingTickets, conferenceName)
 
-			printFirstNames(bookings)
+			firstNames := getFirstNames(bookings)
+			fmt.Printf("The first names of bookings are: %v\n ", firstNames)
+
 
 			if !isValidName {
 				fmt.Println("Your name is invalid, try again")
@@ -75,13 +77,12 @@ func greetUsers(confName string, confTickets int, remaingingTickets uint) {
 }
 
 
-func printFirstNames(bookings []string ) {
+func getFirstNames(bookings []string ) []string {
 	firstNames := []string{}
 			for _, booking := range bookings {
 
 				var names = strings.Fields(booking)
 				firstNames = append(firstNames, names[0])
 			}
-			fmt.Printf("The first names of bookings are: %v\n ", firstNames)
-
+ return firstNames
 }
