@@ -50,7 +50,7 @@ func main() {
 
 func greetUsers() {
 	fmt.Println("Welcome to Go Conference", conferenceName)
-	fmt.Printf("We have total of %v tickets and %v are still availble.\n", conferenceTickets)
+	fmt.Printf("We have total of %v tickets and %v are still availble.\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend")
 
 }
