@@ -6,7 +6,7 @@ import (
 	"booking-app/helper"
 )
 
-const conferenceTickets int = 50
+const conferenceTickets uint = 50
 const conferenceName = "Go Conference"
 var remainingTickets uint = 50
 var bookings = []string{}
@@ -17,7 +17,7 @@ func main() {
 	for {
 
 	firstName, lastName, email, userTickets :=	getUserInput ()
-	isValidName, isValidEmail, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, userTickets)
+	isValidName, isValidEmail, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
 		if isValidName && isValidEmail && isValidTicketNumber {
 		
@@ -26,7 +26,7 @@ func main() {
 
 
 			firstNames := getFirstNames()
-			fmt.Printf("The first names of bookings are: %v\n ", firstNames)
+			fmt.Println("The first names of bookings are: ", firstNames)
 
 			if !isValidName {
 				fmt.Println("Your name is invalid, try again")
@@ -38,9 +38,6 @@ func main() {
 			if !isValidTicketNumber {
 				fmt.Println("Your ticket number is invalid, try again")
 			}
-
-			fmt.Printf("Your input data is invalid, try again")
-
 		}
 	}
 }
