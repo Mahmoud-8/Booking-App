@@ -15,7 +15,6 @@ func main() {
 	greetUsers()
 
 	for {
-
 	firstName, lastName, email, userTickets :=	getUserInput ()
 	isValidName, isValidEmail, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
@@ -85,6 +84,15 @@ func getUserInput() (string, string, string, uint) {
 
 func bookTicket(remainingTickets uint, userTickets uint, bookings []string, firstName string, lastName string, email string ) {
 	remainingTickets = remainingTickets - userTickets
+
+
+	// create a map for a user
+	var userData = make(map[string]string)
+	userData["firstName"] = firstName
+	userData["lastName"] = lastName
+	userData["email"] = email
+	strconv.FormatUint(uint64(userTickets), 10)
+
 	bookings = append(bookings, firstName +" "+lastName)
 
 	fmt.Printf("These are all our bookings: %v\n", bookings)
