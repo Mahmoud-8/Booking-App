@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"strconv"	
 	"booking-app/helper"
 )
@@ -10,7 +9,7 @@ import (
 const conferenceTickets uint = 50
 const conferenceName = "Go Conference"
 var remainingTickets uint = 50
-var bookings = []string{}
+var bookings = make([]map[string]string, 0)
 
 func main() {
 	greetUsers()
@@ -52,9 +51,8 @@ func greetUsers() {
 func getFirstNames() []string {
 	firstNames := []string{}
 	for _, booking := range bookings {
+		firstNames = append(firstNames, booking["firstName"])
 
-		var names = strings.Fields(booking)
-		firstNames = append(firstNames, names[0])
 	}
 	return firstNames
 }
@@ -83,7 +81,7 @@ func getUserInput() (string, string, string, uint) {
 }
 
 
-func bookTicket(remainingTickets uint, userTickets uint, bookings []string, firstName string, lastName string, email string ) {
+func bookTicket(remainingTickets uint, userTickets uint, bookings []map[string]string, firstName string, lastName string, email string ) {
 	remainingTickets = remainingTickets - userTickets
 
 
@@ -94,7 +92,8 @@ func bookTicket(remainingTickets uint, userTickets uint, bookings []string, firs
 	userData["email"] = email
 	userData["numberOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
 
-	bookings = append(bookings, firstName +" "+lastName)
+	bookings = append(bookings, userData)
+	fmt.Printf("List of bookings is %v\n", bookings)
 
 	fmt.Printf("These are all our bookings: %v\n", bookings)
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
