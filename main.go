@@ -30,6 +30,7 @@ func main() {
 		
 
 			bookTicket(remainingTickets, userTickets, bookings, firstName, lastName, email)
+			sendTicket(userTickets, firstName, lastName, email)
 
 
 			firstNames := getFirstNames()
@@ -106,5 +107,14 @@ func bookTicket(remainingTickets uint, userTickets uint, bookings []UserData, fi
 	fmt.Printf("These are all our bookings: %v\n", bookings)
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v Remaining tickets %v\n", remainingTickets, conferenceName)
+
+}
+
+func sendTicket( userTickets uint, firstName string, lastName string, email string) {
+	// Send ticket to user
+	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)
+	fmt.Println("#################")
+	fmt.Printf("Sending ticket: %v \nto email address %v\n", ticket, email)
+	fmt.Println("#################")
 
 }
