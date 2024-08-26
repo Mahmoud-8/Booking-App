@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"booking-app/helper"
+	"fmt"
+	"time"
 )
 
 const conferenceTickets uint = 50
@@ -111,7 +112,7 @@ func bookTicket(remainingTickets uint, userTickets uint, bookings []UserData, fi
 }
 
 func sendTicket( userTickets uint, firstName string, lastName string, email string) {
-	// Send ticket to user
+	time.Sleep(10 * time.Second)
 	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)
 	fmt.Println("#################")
 	fmt.Printf("Sending ticket: %v \nto email address %v\n", ticket, email)
